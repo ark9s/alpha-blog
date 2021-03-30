@@ -1,0 +1,21 @@
+<% if @article.errors.any? %>
+  <h2>Please resolve the following errors: </h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @article, local: true) do |form| %>
+  <p>
+    <%= form.label :title, "Title" %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description, "Description" %><br>
+    <%= form.text_area :description %>
+  </p>
+  <%= form.submit %>
+<% end %>
